@@ -266,13 +266,49 @@
     window.addEventListener('resize', resize, { passive: true });
   }
 
-  /* ---------- Contact form (front-end only placeholder) ---------- */
+  /* ---------- Contact form with EmailJS ---------- */
   const form = document.getElementById('contactForm');
   const formNote = document.getElementById('formNote');
+  const submitBtn = document.getElementById('submitBtn');
+  
   if (form) {
-    form.addEventListener('submit', (e) => {
+    // Initialize EmailJS
+    emailjs.init("YOUR_PUBLIC_KEY"); // Você precisa criar uma conta em emailjs.com
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      formNote.textContent = 'Mensagem pronta! Conecte este formulário a um serviço de envio (ex: Formspree, EmailJS) ou ao seu back-end para receber os contatos.';
+      
+      const btnText = submitBtn.querySelector('.btn-text');
+      const originalText = btnText.textContent;
+      
+      try {
+        submitBtn.disabled = true;
+        btnText.textContent = 'Enviando...';
+        formNote.textContent = '';
+        
+        const templateParams = {
+          to_email: 'impulsodigitalti@gmail.com',
+          from_name: form.elements['nome'].value,
+          from_email: form.elements['email'].value,
+          servico: form.elements['servico'].value,
+          mensagem: form.elements['mensagem'].value,
+          reply_to: form.elements['email'].value
+        };
+        
+        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
+        
+        formNote.textContent = '✅ Mensagem enviada com sucesso! Responderemos em breve.';
+        formNote.style.color = 'var(--accent-2)';
+        form.reset();
+        
+      } catch (error) {
+        formNote.textContent = '❌ Erro ao enviar. Tente novamente ou entre em contato via WhatsApp.';
+        formNote.style.color = 'var(--accent-3)';
+        console.error('EmailJS error:', error);
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = originalText;
+      }
     });
   }
 })();

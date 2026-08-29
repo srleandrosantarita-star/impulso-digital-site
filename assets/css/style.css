@@ -215,17 +215,48 @@ h1, h2, h3 {
   border-color: var(--border);
 }
 
-.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 26px;
+  min-width: 0;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
 
 .logo {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 .logo-img { height: 60px; width: auto; display: block; }
+.logo-wordmark {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1;
+}
 .site-footer .logo-img { height: 46px; }
 
 .logo-glow { animation: logo-pulse 3.2s ease-in-out infinite; }
@@ -712,12 +743,9 @@ h1, h2, h3 {
 
 /* ---------- WhatsApp floating button ---------- */
 .whatsapp-float {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  z-index: 90;
-  width: 58px;
-  height: 58px;
+  position: relative;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -727,10 +755,15 @@ h1, h2, h3 {
   box-shadow: 0 10px 28px -8px rgba(37, 211, 102, 0.55), 0 0 0 1px rgba(255,255,255,0.06);
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
-.whatsapp-float svg { width: 28px; height: 28px; position: relative; z-index: 1; }
+.whatsapp-float svg { width: 22px; height: 22px; position: relative; z-index: 1; }
 .whatsapp-float:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 16px 36px -8px rgba(37, 211, 102, 0.7), 0 0 0 1px rgba(255,255,255,0.1);
+}
+
+.header-whatsapp {
+  position: relative;
+  z-index: 1;
 }
 
 .whatsapp-pulse {
@@ -750,19 +783,11 @@ h1, h2, h3 {
   .whatsapp-pulse { animation: none; opacity: 0; }
 }
 
-@media (max-width: 768px) {
-  .whatsapp-float { right: 16px; bottom: 16px; width: 52px; height: 52px; }
-  .whatsapp-float svg { width: 25px; height: 25px; }
-}
-
 /* ---------- Music toggle ---------- */
 .music-toggle {
-  position: fixed;
-  right: 24px;
-  bottom: 94px;
-  z-index: 90;
-  width: 52px;
-  height: 52px;
+  position: relative;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -777,7 +802,7 @@ h1, h2, h3 {
 .music-toggle:hover { transform: translateY(-3px) scale(1.05); border-color: rgba(0, 240, 255, 0.4); color: var(--text); }
 .music-toggle:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-.music-icon { width: 22px; height: 22px; }
+.music-icon { width: 20px; height: 20px; }
 
 .music-toggle.playing {
   background: var(--accent-grad);
@@ -815,8 +840,11 @@ h1, h2, h3 {
 }
 
 @media (max-width: 768px) {
-  .music-toggle { right: 16px; bottom: 78px; width: 46px; height: 46px; }
-  .music-icon { width: 19px; height: 19px; }
+  .header-actions { gap: 8px; }
+  .whatsapp-float { width: 38px; height: 38px; }
+  .whatsapp-float svg { width: 20px; height: 20px; }
+  .music-toggle { width: 38px; height: 38px; }
+  .music-icon { width: 18px; height: 18px; }
 }
 
 /* ---------- Responsive ---------- */
