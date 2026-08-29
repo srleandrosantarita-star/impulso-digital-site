@@ -226,8 +226,9 @@ h1, h2, h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 26px;
+  gap: 18px;
   min-width: 0;
+  margin-right: auto;
 }
 
 .header-actions {
@@ -235,6 +236,8 @@ h1, h2, h3 {
   align-items: center;
   justify-content: center;
   gap: 18px;
+  margin-left: 8px;
+  transform: translateY(2px);
 }
 
 .logo {
@@ -754,6 +757,7 @@ h1, h2, h3 {
   color: #06120b;
   box-shadow: 0 10px 28px -8px rgba(37, 211, 102, 0.55), 0 0 0 1px rgba(255,255,255,0.06);
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  margin: 0 auto;
 }
 .whatsapp-float svg { width: 22px; height: 22px; position: relative; z-index: 1; }
 .whatsapp-float:hover {
@@ -764,6 +768,9 @@ h1, h2, h3 {
 .header-whatsapp {
   position: relative;
   z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .whatsapp-pulse {
