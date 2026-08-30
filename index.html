@@ -18,40 +18,6 @@
 </head>
 <body>
 
-<div class="promo-bar" id="promoBar">
-  <a href="https://wa.me/5547992607105" target="_blank" rel="noopener" class="promo-track" aria-label="Diagnóstico digital gratuito — falar no WhatsApp">
-    <div class="promo-group">
-      <span class="promo-item">🎁 Diagnóstico digital gratuito para novos clientes</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">🚀 Vagas limitadas este mês — garanta a sua</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">💬 Fale agora com a Impulso Digital no WhatsApp</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">🎁 Diagnóstico digital gratuito para novos clientes</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">🚀 Vagas limitadas este mês — garanta a sua</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">💬 Fale agora com a Impulso Digital no WhatsApp</span>
-      <span class="promo-sep">✦</span>
-    </div>
-    <div class="promo-group" aria-hidden="true">
-      <span class="promo-item">🎁 Diagnóstico digital gratuito para novos clientes</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">🚀 Vagas limitadas este mês — garanta a sua</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">💬 Fale agora com a Impulso Digital no WhatsApp</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">🎁 Diagnóstico digital gratuito para novos clientes</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">🚀 Vagas limitadas este mês — garanta a sua</span>
-      <span class="promo-sep">✦</span>
-      <span class="promo-item">💬 Fale agora com a Impulso Digital no WhatsApp</span>
-      <span class="promo-sep">✦</span>
-    </div>
-  </a>
-  <button class="promo-close" id="promoClose" aria-label="Fechar aviso promocional">✕</button>
-</div>
-
 <div class="cursor-glow" aria-hidden="true"></div>
 
 <header class="site-header" id="siteHeader">
@@ -59,7 +25,6 @@
     <div class="brand-group">
       <a href="#top" class="logo logo-glow" aria-label="Impulso Digital">
         <img src="assets/img/logo-horizontal.png" alt="Impulso Digital" class="logo-img">
-        <span class="logo-wordmark">Impulso Digital</span>
       </a>
     </div>
 
@@ -287,7 +252,9 @@
         </ul>
       </div>
 
-      <form class="contact-form reveal" style="--delay: 0.1s" id="contactForm">
+      <form class="contact-form reveal" style="--delay: 0.1s" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="form-honeypot"><label>Não preencha este campo: <input name="bot-field"></label></p>
         <div class="form-row">
           <label>
             <span>Nome</span>
@@ -339,17 +306,6 @@
 <audio id="bgMusic" loop preload="auto">
   <source src="assets/audio/background.mp3" type="audio/mpeg">
 </audio>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
-
-<button id="musicToggle" class="music-toggle" aria-label="Ativar música de fundo" aria-pressed="false" title="Música de fundo">
-  <svg class="music-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M9 18V6l11-2v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    <circle cx="6.5" cy="18" r="2.5" stroke="currentColor" stroke-width="1.6"/>
-    <circle cx="17.5" cy="16" r="2.5" stroke="currentColor" stroke-width="1.6"/>
-  </svg>
-  <span class="music-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-</button>
 
 <script src="assets/js/script.js"></script>
 </body>

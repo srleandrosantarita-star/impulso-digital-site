@@ -26,7 +26,6 @@
 
   --container: 1160px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --promo-h: 42px;
 }
 
 html { scroll-behavior: smooth; }
@@ -71,8 +70,18 @@ h1, h2, h3 {
 }
 
 .hero-inner .eyebrow {
-  display: block;
-  text-align: left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  padding: 9px 20px;
+  border: 1px solid rgba(0, 240, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(0, 240, 255, 0.14);
 }
 
 .section-head { max-width: 640px; margin-bottom: 64px; }
@@ -129,85 +138,10 @@ h1, h2, h3 {
 .btn-small { padding: 10px 20px; font-size: 0.85rem; }
 .btn-full { width: 100%; }
 
-/* ---------- Promo bar ---------- */
-.promo-bar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--promo-h);
-  z-index: 110;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--accent-grad);
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  transition: height 0.35s var(--ease), opacity 0.3s var(--ease);
-}
-.promo-bar.dismissed {
-  height: 0;
-  opacity: 0;
-  border-bottom: none;
-  pointer-events: none;
-}
-
-.promo-track {
-  display: flex;
-  width: max-content;
-  animation: promo-scroll 26s linear infinite;
-  will-change: transform;
-}
-.promo-bar.dismissed .promo-track { animation-play-state: paused; }
-
-@keyframes promo-scroll {
-  from { transform: translateX(-50%); }
-  to { transform: translateX(0%); }
-}
-
-.promo-group { display: flex; align-items: center; flex-shrink: 0; }
-
-.promo-item {
-  color: #0a0b10;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-  padding: 0 14px;
-}
-.promo-sep {
-  color: rgba(10, 11, 16, 0.5);
-  font-size: 0.7rem;
-}
-
-.promo-close {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 26px; height: 26px;
-  display: flex; align-items: center; justify-content: center;
-  border: none;
-  border-radius: 50%;
-  background: rgba(10, 11, 16, 0.18);
-  color: #0a0b10;
-  font-size: 0.75rem;
-  cursor: pointer;
-  z-index: 1;
-  transition: background 0.25s;
-}
-.promo-close:hover { background: rgba(10, 11, 16, 0.32); }
-
-@media (prefers-reduced-motion: reduce) {
-  .promo-track { animation: none; }
-}
-
-@media (max-width: 640px) {
-  :root { --promo-h: 38px; }
-  .promo-item { font-size: 0.75rem; padding: 0 10px; }
-}
-
 /* ---------- Header ---------- */
 .site-header {
   position: fixed;
-  top: var(--promo-h); left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 22px 0;
   transition: top 0.35s var(--ease), padding 0.4s var(--ease), background 0.4s var(--ease), border-color 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
@@ -246,24 +180,14 @@ h1, h2, h3 {
 
 .logo {
   display: inline-flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   font-family: var(--font-heading);
   font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 .logo-img { height: 60px; width: auto; display: block; }
-.logo-wordmark {
-  display: block;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text);
-  line-height: 1;
-}
 .site-footer .logo-img { height: 46px; }
 
 .logo-glow { animation: logo-pulse 3.2s ease-in-out infinite; }
@@ -333,7 +257,7 @@ h1, h2, h3 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: calc(100px + var(--promo-h));
+  padding-top: 100px;
   overflow: hidden;
   transition: padding-top 0.35s var(--ease);
 }
@@ -864,6 +788,14 @@ h1, h2, h3 {
   .whatsapp-float svg { width: 20px; height: 20px; }
   .music-toggle { width: 38px; height: 38px; }
   .music-icon { width: 18px; height: 18px; }
+}
+
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 /* ---------- Responsive ---------- */

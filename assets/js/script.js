@@ -1,22 +1,6 @@
 (() => {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Promo bar ---------- */
-  const promoBar = document.getElementById('promoBar');
-  const promoClose = document.getElementById('promoClose');
-  if (promoBar && promoClose) {
-    try {
-      if (sessionStorage.getItem('promoDismissed') === '1') {
-        promoBar.classList.add('dismissed');
-      }
-    } catch (e) { /* sessionStorage unavailable */ }
-
-    promoClose.addEventListener('click', () => {
-      promoBar.classList.add('dismissed');
-      try { sessionStorage.setItem('promoDismissed', '1'); } catch (e) { /* ignore */ }
-    });
-  }
-
   /* ---------- Footer year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -266,45 +250,39 @@
     window.addEventListener('resize', resize, { passive: true });
   }
 
-  /* ---------- Contact form with EmailJS ---------- */
+  /* ---------- Contact form with Netlify Forms ---------- */
   const form = document.getElementById('contactForm');
   const formNote = document.getElementById('formNote');
   const submitBtn = document.getElementById('submitBtn');
-  
-  if (form) {
-    // Initialize EmailJS
-    emailjs.init("YOUR_PUBLIC_KEY"); // Você precisa criar uma conta em emailjs.com
 
+  if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
+
       const btnText = submitBtn.querySelector('.btn-text');
       const originalText = btnText.textContent;
-      
+
       try {
         submitBtn.disabled = true;
         btnText.textContent = 'Enviando...';
         formNote.textContent = '';
-        
-        const templateParams = {
-          to_email: 'impulsodigitalti@gmail.com',
-          from_name: form.elements['nome'].value,
-          from_email: form.elements['email'].value,
-          servico: form.elements['servico'].value,
-          mensagem: form.elements['mensagem'].value,
-          reply_to: form.elements['email'].value
-        };
-        
-        await emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams);
-        
+
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        }).then((response) => {
+          if (!response.ok) throw new Error(`Netlify Forms respondeu ${response.status}`);
+        });
+
         formNote.textContent = '✅ Mensagem enviada com sucesso! Responderemos em breve.';
         formNote.style.color = 'var(--accent-2)';
         form.reset();
-        
+
       } catch (error) {
         formNote.textContent = '❌ Erro ao enviar. Tente novamente ou entre em contato via WhatsApp.';
         formNote.style.color = 'var(--accent-3)';
-        console.error('EmailJS error:', error);
+        console.error('Netlify Forms error:', error);
       } finally {
         submitBtn.disabled = false;
         btnText.textContent = originalText;
