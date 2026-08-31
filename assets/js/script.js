@@ -250,43 +250,32 @@
     window.addEventListener('resize', resize, { passive: true });
   }
 
-  /* ---------- Contact form with Netlify Forms ---------- */
+  /* ---------- Contact form via WhatsApp ---------- */
   const form = document.getElementById('contactForm');
   const formNote = document.getElementById('formNote');
-  const submitBtn = document.getElementById('submitBtn');
+  const WHATSAPP_NUMBER = '5547992607105';
 
   if (form) {
-    form.addEventListener('submit', async (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      const btnText = submitBtn.querySelector('.btn-text');
-      const originalText = btnText.textContent;
+      const nome = form.elements['nome'].value;
+      const email = form.elements['email'].value;
+      const servico = form.elements['servico'].value;
+      const mensagem = form.elements['mensagem'].value;
 
-      try {
-        submitBtn.disabled = true;
-        btnText.textContent = 'Enviando...';
-        formNote.textContent = '';
+      const texto =
+        `Olá! Vim pelo site da Impulso Digital.\n\n` +
+        `Nome: ${nome}\n` +
+        `E-mail: ${email}\n` +
+        `Serviço de interesse: ${servico}\n` +
+        `Mensagem: ${mensagem}`;
 
-        await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(new FormData(form)).toString()
-        }).then((response) => {
-          if (!response.ok) throw new Error(`Netlify Forms respondeu ${response.status}`);
-        });
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
 
-        formNote.textContent = '✅ Mensagem enviada com sucesso! Responderemos em breve.';
-        formNote.style.color = 'var(--accent-2)';
-        form.reset();
-
-      } catch (error) {
-        formNote.textContent = '❌ Erro ao enviar. Tente novamente ou entre em contato via WhatsApp.';
-        formNote.style.color = 'var(--accent-3)';
-        console.error('Netlify Forms error:', error);
-      } finally {
-        submitBtn.disabled = false;
-        btnText.textContent = originalText;
-      }
+      formNote.textContent = '✅ Abrindo o WhatsApp com sua mensagem pronta para enviar.';
+      formNote.style.color = 'var(--accent-2)';
+      form.reset();
     });
   }
 })();

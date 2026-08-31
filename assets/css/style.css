@@ -790,14 +790,6 @@ h1, h2, h3 {
   .music-icon { width: 18px; height: 18px; }
 }
 
-.form-honeypot {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
 /* ---------- Responsive ---------- */
 @media (max-width: 960px) {
   .cards-grid { grid-template-columns: 1fr; }
