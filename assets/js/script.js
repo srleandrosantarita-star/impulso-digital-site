@@ -46,25 +46,6 @@
     revealEls.forEach(el => revealObserver.observe(el));
   }
 
-  /* ---------- Rotating hero text ---------- */
-  const rotatingWords = ['para vender mais.', 'para crescer rápido.', 'para automatizar tarefas.', 'para se destacar online.'];
-  const rotatingEl = document.getElementById('rotatingText');
-  if (rotatingEl && !prefersReducedMotion) {
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % rotatingWords.length;
-      rotatingEl.style.opacity = '0';
-      rotatingEl.style.transform = 'translateY(6px)';
-      setTimeout(() => {
-        rotatingEl.textContent = rotatingWords[idx];
-        rotatingEl.style.opacity = '1';
-        rotatingEl.style.transform = 'translateY(0)';
-      }, 260);
-    }, 2800);
-    rotatingEl.style.transition = 'opacity 0.26s ease, transform 0.26s ease';
-    rotatingEl.style.display = 'inline-block';
-  }
-
   /* ---------- Animated stat counters ---------- */
   const statEls = document.querySelectorAll('.stat-num');
   const animateCount = (el) => {
@@ -95,38 +76,59 @@
     }
   }
 
-  /* ---------- Tilt effect on cards ---------- */
+  /* ---------- Service card lift on hover ---------- */
   if (!prefersReducedMotion && window.matchMedia('(hover: hover)').matches) {
-    document.querySelectorAll('.tilt-card').forEach(card => {
+    document.querySelectorAll('.service-card').forEach(card => {
       card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width - 0.5;
         const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `perspective(700px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-4px)`;
+        card.style.transform = `translateY(-4px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
       });
       card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(700px) rotateX(0) rotateY(0) translateY(0)';
+        card.style.transform = '';
       });
     });
-
-    /* ---------- Cursor glow ---------- */
-    const glow = document.querySelector('.cursor-glow');
-    let glowX = window.innerWidth / 2;
-    let glowY = window.innerHeight / 2;
-    let targetX = glowX;
-    let targetY = glowY;
-    window.addEventListener('mousemove', (e) => {
-      targetX = e.clientX;
-      targetY = e.clientY;
-    });
-    const animateGlow = () => {
-      glowX += (targetX - glowX) * 0.12;
-      glowY += (targetY - glowY) * 0.12;
-      if (glow) glow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
-      requestAnimationFrame(animateGlow);
-    };
-    requestAnimationFrame(animateGlow);
   }
+
+  /* ---------- Hero orbit icons ---------- */
+  const HERO_ICONS_OUTER = [
+    '<path d="M5 12a11 11 0 0 1 14 0"/><path d="M8.2 15.5a6.5 6.5 0 0 1 7.6 0"/><circle cx="12" cy="19" r="1.4" fill="#fff" stroke="none"/>',
+    '<path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5c-1.35 0-2.61-.32-3.73-.9L4 21l1.9-4.77A8.5 8.5 0 1 1 21 11.5Z"/>',
+    '<circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/>',
+    '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    '<path d="M9 2v4M15 2v4M6 8h12M6 16l2 2-2 2M18 16l-2 2 2 2"/><rect x="4" y="6" width="16" height="16" rx="2"/>',
+    '<rect x="4" y="4" width="16" height="10" rx="1.5"/><path d="M2 18h20l-2-3H4Z"/>',
+    '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'
+  ];
+  const HERO_ICONS_INNER = [
+    '<path d="M7 18a4 4 0 0 1-.6-7.95A5 5 0 0 1 16 8a3.5 3.5 0 0 1 1 6.9"/><path d="M6 18h12"/>',
+    '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/>',
+    '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    '<path d="M8 9l-4 3 4 3"/><path d="M16 9l4 3-4 3"/>',
+    '<rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="0.6" fill="#fff" stroke="none"/>'
+  ];
+
+  const buildHeroRing = (elId, icons, radiusPercent) => {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    el.innerHTML = '';
+    icons.forEach((iconPath, i) => {
+      const angle = (360 / icons.length) * i - 90;
+      const rad = angle * Math.PI / 180;
+      const x = 50 + radiusPercent * Math.cos(rad);
+      const y = 50 + radiusPercent * Math.sin(rad);
+      const node = document.createElement('div');
+      node.className = 'hero-node';
+      node.style.left = x + '%';
+      node.style.top = y + '%';
+      node.innerHTML = `<div class="hero-badge"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">${iconPath}</svg></div>`;
+      el.appendChild(node);
+    });
+  };
+  buildHeroRing('heroRingOuter', HERO_ICONS_OUTER, 46);
+  buildHeroRing('heroRingInner', HERO_ICONS_INNER, 30);
 
   /* ---------- Background music toggle ---------- */
   const bgMusic = document.getElementById('bgMusic');
@@ -178,78 +180,6 @@
     attemptAutoplay();
   }
 
-  /* ---------- Hero particle network ---------- */
-  const canvas = document.getElementById('particles');
-  if (canvas && !prefersReducedMotion) {
-    const ctx = canvas.getContext('2d');
-    const heroSection = canvas.closest('.hero');
-    let particles = [];
-    let width = 0, height = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    const colors = ['rgba(138, 63, 252, 0.8)', 'rgba(0, 240, 255, 0.8)', 'rgba(255, 61, 203, 0.7)'];
-
-    const resize = () => {
-      const rect = heroSection.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      const count = Math.min(70, Math.round((width * height) / 18000));
-      particles = Array.from({ length: count }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.6 + 0.6,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      }));
-    };
-
-    const step = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      particles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-      });
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i], b = particles[j];
-          const dx = a.x - b.x, dy = a.y - b.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.strokeStyle = `rgba(255,255,255,${0.08 * (1 - dist / 120)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.fillStyle = p.color;
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      requestAnimationFrame(step);
-    };
-
-    resize();
-    requestAnimationFrame(step);
-    window.addEventListener('resize', resize, { passive: true });
-  }
-
   /* ---------- Contact form via WhatsApp ---------- */
   const form = document.getElementById('contactForm');
   const formNote = document.getElementById('formNote');
@@ -265,7 +195,7 @@
       const mensagem = form.elements['mensagem'].value;
 
       const texto =
-        `Olá! Vim pelo site da Impulso Digital.\n\n` +
+        `Olá! Vim pelo site da Soluções da Internet.\n\n` +
         `Nome: ${nome}\n` +
         `E-mail: ${email}\n` +
         `Serviço de interesse: ${servico}\n` +
@@ -274,7 +204,6 @@
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
 
       formNote.textContent = '✅ Abrindo o WhatsApp com sua mensagem pronta para enviar.';
-      formNote.style.color = 'var(--accent-2)';
       form.reset();
     });
   }

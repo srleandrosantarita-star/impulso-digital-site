@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://impulso-digital-603.netlify.app/sitemap.xml
+Sitemap: https://solucoesdainternet.com.br/sitemap.xml
