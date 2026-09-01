@@ -91,6 +91,33 @@
     });
   }
 
+  /* ---------- Hero headline letter reveal ---------- */
+  const heroHeadline = document.getElementById('heroHeadline');
+  if (heroHeadline) {
+    const LETTER_STEP = 0.035;
+    const BASE_DELAY = 0.15;
+    const text = heroHeadline.textContent;
+    const words = text.split(' ');
+    heroHeadline.innerHTML = '';
+    let idx = 0;
+    words.forEach((word, wi) => {
+      const wordSpan = document.createElement('span');
+      wordSpan.className = 'word';
+      [...word].forEach((ch) => {
+        const letter = document.createElement('span');
+        letter.className = 'letter';
+        letter.textContent = ch;
+        letter.style.animationDelay = (BASE_DELAY + idx * LETTER_STEP).toFixed(3) + 's';
+        wordSpan.appendChild(letter);
+        idx++;
+      });
+      heroHeadline.appendChild(wordSpan);
+      if (wi < words.length - 1) {
+        heroHeadline.appendChild(document.createTextNode(' '));
+      }
+    });
+  }
+
   /* ---------- Hero orbit icons ---------- */
   const HERO_ICONS_OUTER = [
     '<path d="M5 12a11 11 0 0 1 14 0"/><path d="M8.2 15.5a6.5 6.5 0 0 1 7.6 0"/><circle cx="12" cy="19" r="1.4" fill="#fff" stroke="none"/>',
