@@ -264,22 +264,6 @@ h1, h2, h3 {
 .main-nav a:hover { color: var(--teal-deep); }
 
 .header-actions { display: flex; align-items: center; gap: 12px; }
-.music-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  border: 1.5px solid var(--surface-border);
-  background: var(--surface);
-  color: var(--ink-soft);
-  cursor: pointer;
-  position: relative;
-}
-.music-toggle svg { width: 17px; height: 17px; }
-.music-toggle.playing { color: var(--teal-deep); border-color: var(--teal); }
-.music-toggle:disabled { opacity: 0.4; cursor: not-allowed; }
-.music-bars { display: none; }
 
 .whatsapp-float {
   display: inline-flex;
@@ -354,7 +338,6 @@ h1, h2, h3 {
 }
 
 @media (max-width: 480px) {
-  .music-toggle { display: none; }
   .brand-word { font-size: 0.78rem; }
 }
 

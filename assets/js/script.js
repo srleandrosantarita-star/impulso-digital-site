@@ -157,55 +157,6 @@
   buildHeroRing('heroRingOuter', HERO_ICONS_OUTER, 46);
   buildHeroRing('heroRingInner', HERO_ICONS_INNER, 30);
 
-  /* ---------- Background music toggle ---------- */
-  const bgMusic = document.getElementById('bgMusic');
-  const musicToggle = document.getElementById('musicToggle');
-  if (bgMusic && musicToggle) {
-    bgMusic.volume = 0.35;
-
-    const disableMusic = () => {
-      bgMusic.pause();
-      musicToggle.disabled = true;
-      musicToggle.classList.remove('playing');
-      musicToggle.title = 'Adicione o arquivo assets/audio/background.mp3 para ativar a música';
-      musicToggle.setAttribute('aria-label', 'Música de fundo indisponível');
-    };
-
-    bgMusic.addEventListener('error', disableMusic);
-
-    // 'playing' fires only once real playback starts — the reliable signal that the source works.
-    bgMusic.addEventListener('playing', () => {
-      musicToggle.classList.add('playing');
-      musicToggle.setAttribute('aria-pressed', 'true');
-      musicToggle.setAttribute('aria-label', 'Pausar música de fundo');
-    });
-
-    musicToggle.addEventListener('click', () => {
-      if (bgMusic.paused) {
-        bgMusic.play().catch(disableMusic);
-      } else {
-        bgMusic.pause();
-        musicToggle.classList.remove('playing');
-        musicToggle.setAttribute('aria-pressed', 'false');
-        musicToggle.setAttribute('aria-label', 'Ativar música de fundo');
-      }
-    });
-
-    // Try to autoplay on load. Most browsers block unmuted autoplay without a user
-    // gesture, so fall back to starting on the visitor's first interaction with the page.
-    const attemptAutoplay = () => bgMusic.play().catch(() => {
-      const startOnFirstInteraction = () => {
-        bgMusic.play().catch(() => {});
-        ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(evt =>
-          document.removeEventListener(evt, startOnFirstInteraction)
-        );
-      };
-      ['pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(evt =>
-        document.addEventListener(evt, startOnFirstInteraction, { once: true, passive: true })
-      );
-    });
-    attemptAutoplay();
-  }
 
   /* ---------- Contact form via WhatsApp ---------- */
   const form = document.getElementById('contactForm');
