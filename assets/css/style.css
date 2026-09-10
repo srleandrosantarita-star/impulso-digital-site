@@ -245,6 +245,30 @@ h1, h2, h3 {
   margin-right: auto;
 }
 .brand-icon { height: 28px; width: auto; flex: none; }
+.brand-icon-wrap { position: relative; display: inline-block; line-height: 0; flex: none; }
+.brand-icon-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,0.9) 50%, transparent 60%);
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  -webkit-mask-image: url("../img/logo-icon.png");
+  mask-image: url("../img/logo-icon.png");
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  animation: brandShine 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes brandShine {
+  0% { background-position: 160% 0; }
+  50% { background-position: -60% 0; }
+  100% { background-position: -60% 0; }
+}
 .brand-word {
   font-family: var(--font-display);
   font-size: 1rem;
