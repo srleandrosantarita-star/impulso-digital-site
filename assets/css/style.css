@@ -265,8 +265,8 @@ h1, h2, h3 {
   pointer-events: none;
 }
 @keyframes brandShine {
-  0% { background-position: 160% 0; }
-  100% { background-position: -60% 0; }
+  0% { background-position: 120% 0; }
+  100% { background-position: -20% 0; }
 }
 .brand-word {
   font-family: var(--font-display);
