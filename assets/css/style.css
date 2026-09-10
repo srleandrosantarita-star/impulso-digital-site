@@ -250,7 +250,7 @@ h1, h2, h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, transparent 40%, rgba(255,255,255,0.9) 50%, transparent 60%);
+  background: linear-gradient(100deg, transparent 47%, rgba(255,255,255,0.9) 50%, transparent 53%);
   background-size: 300% 100%;
   background-repeat: no-repeat;
   -webkit-mask-image: url("../img/logo-icon.png");
