@@ -261,7 +261,7 @@ h1, h2, h3 {
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-  animation: brandShine 6s ease-in-out infinite;
+  animation: brandShine 10s ease-in-out infinite;
   pointer-events: none;
 }
 @keyframes brandShine {
