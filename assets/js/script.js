@@ -127,7 +127,8 @@
     '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
     '<path d="M9 2v4M15 2v4M6 8h12M6 16l2 2-2 2M18 16l-2 2 2 2"/><rect x="4" y="6" width="16" height="16" rx="2"/>',
     '<rect x="4" y="4" width="16" height="10" rx="1.5"/><path d="M2 18h20l-2-3H4Z"/>',
-    '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>'
+    '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    '<rect x="2" y="7" width="20" height="15" rx="2"/><path d="M17 2l-5 5-5-5"/>'
   ];
   const HERO_ICONS_INNER = [
     '<path d="M7 18a4 4 0 0 1-.6-7.95A5 5 0 0 1 16 8a3.5 3.5 0 0 1 1 6.9"/><path d="M6 18h12"/>',
