@@ -261,12 +261,11 @@ h1, h2, h3 {
   mask-repeat: no-repeat;
   -webkit-mask-position: center;
   mask-position: center;
-  animation: brandShine 10s ease-in-out infinite;
+  animation: brandShine 20s linear infinite;
   pointer-events: none;
 }
 @keyframes brandShine {
   0% { background-position: 160% 0; }
-  50% { background-position: -60% 0; }
   100% { background-position: -60% 0; }
 }
 .brand-word {
