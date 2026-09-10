@@ -134,7 +134,8 @@
     '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/>',
     '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
     '<path d="M8 9l-4 3 4 3"/><path d="M16 9l4 3-4 3"/>',
-    '<rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="0.6" fill="#fff" stroke="none"/>'
+    '<rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="0.6" fill="#fff" stroke="none"/>',
+    '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.75.75 1.23 1.5 1.41 2.5"/>'
   ];
 
   const buildHeroRing = (elId, icons, radiusPercent) => {
