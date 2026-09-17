@@ -211,6 +211,44 @@ PAGES = [
    ("Quanto custa? Tem mensalidade?","Sim, tem mensalidade. Um chatbot não é um produto que se instala e acaba: ele fica no ar 24 horas, consome os serviços de inteligência artificial a cada conversa e precisa de ajuste conforme o negócio muda — e é isso que a mensalidade cobre. O valor depende de quantas situações o robô precisa atender e de quais sistemas ele vai conversar. Levantamos isso antes e apresentamos tudo discriminado no orçamento, para você não descobrir custo recorrente depois de fechar."),
    ("Vou deixar de atender pessoalmente meus clientes?","Não é a ideia. O chatbot cuida do que é repetitivo e do que chega fora do horário; você continua atendendo o que importa — só que com o cliente já qualificado e sem perder mensagem.")
  ]
+},
+{
+ "slug":"landing-pages-balneario-camboriu.html",
+ "nav":"Landing Pages",
+ "h1":"Criação de Landing Pages em Balneário Camboriú",
+ "title":"Criação de Landing Pages em Balneário Camboriú/SC — Soluções da Internet",
+ "desc":"Criação de landing pages de alta conversão em Balneário Camboriú: páginas focadas em campanhas de anúncios, lançamentos e captação de clientes, prontas para medir resultado.",
+ "sub":"Uma página só, com um objetivo só: fazer o visitante agir. Feita para campanhas de anúncios, lançamentos e captação de contatos — e preparada para você medir o que cada real investido trouxe de volta.",
+ "svc_name":"Criação de Landing Pages",
+ "cities":["Balneário Camboriú","Camboriú"],
+ "intro":[
+   "Mandar tráfego pago para a home do site costuma ser desperdício: a home tem menu, serviços, rodapé e dez caminhos possíveis. Quem chegou por um anúncio específico se perde no meio disso e vai embora.",
+   "A <strong>landing page</strong> resolve exatamente isso. É uma página única, sem distração, construída em torno de uma só ação — pedir orçamento, se inscrever, baixar algo, chamar no WhatsApp. A <strong>Soluções da Internet</strong> desenvolve landing pages para negócios de <strong>Balneário Camboriú e Camboriú</strong>, e remotamente para todo o Brasil."
+ ],
+ "incl_title":"O que está incluído",
+ "incl":[
+   "<strong>Uma única ação em foco</strong> — a página inteira é escrita e organizada para conduzir a esse objetivo, sem menu ou link que disperse o visitante.",
+   "<strong>Carregamento rápido</strong> — página leve, porque em campanha paga cada segundo de espera é dinheiro de anúncio que você já gastou e perdeu.",
+   "<strong>Feita para o celular primeiro</strong> — é de onde vem a maior parte do tráfego de anúncios.",
+   "<strong>Formulário ou WhatsApp direto</strong> — o contato chega por onde for mais prático para você atender.",
+   "<strong>Medição configurada</strong> — Google Analytics e o pixel da plataforma de anúncios instalados, para você saber quantos contatos cada campanha gerou.",
+   "<strong>Texto orientado a conversão</strong> — estruturamos os argumentos, a prova e a chamada para ação; você revisa e ajusta o que não soar como você.",
+   "<strong>Domínio e hospedagem configurados</strong>, com certificado de segurança (HTTPS)."
+ ],
+ "steps_title":"Como funciona o processo",
+ "steps":[
+   ("Objetivo","Definimos qual é a única ação que a página precisa gerar e para quem ela fala. Isso decide todo o resto."),
+   ("Estrutura","Montamos a ordem dos argumentos: o problema, a solução, a prova e a chamada para ação."),
+   ("Construção","Desenvolvemos a página, instalamos a medição e testamos o formulário de ponta a ponta."),
+   ("Ajuste","Com a campanha rodando, olhamos os números reais e afinamos o que não estiver convertendo.")
+ ],
+ "faq":[
+   ("Qual a diferença entre uma landing page e um site?","O site apresenta o negócio inteiro e serve a vários objetivos — quem chega nele pode estar procurando qualquer coisa. A landing page tem um objetivo só e nenhum caminho alternativo, por isso converte melhor o tráfego de uma campanha específica. Não são concorrentes: o site é a sua presença permanente, a landing page é a ferramenta da campanha. Se você precisa da presença completa, veja nossa página de criação de sites."),
+   ("Quanto tempo leva para ficar pronto?","Uma landing page é o formato mais rápido que entregamos — costuma ficar perto de uma semana, dentro da faixa de 1 a 3 semanas que vale para os nossos projetos de site. O que mais influencia é a velocidade na definição da oferta e na aprovação do texto."),
+   ("Preciso já ter campanha de anúncios rodando?","Não, mas a landing page rende muito mais quando existe tráfego direcionado chegando nela. Se você ainda não anuncia, vale conversar sobre isso antes, para a página não ficar pronta e sem visitantes."),
+   ("Vocês garantem quantos clientes a página vai trazer?","Não, e desconfie de quem garantir. O resultado depende da sua oferta, do preço, do público e do investimento em anúncios — a página é uma parte importante disso, não o todo. O que fazemos é construir a página com as boas práticas de conversão e deixar a medição configurada, para que a decisão seguinte seja tomada com número e não com achismo."),
+   ("Dá para testar versões diferentes da página?","Sim. Com a medição configurada, é possível publicar variações e comparar qual converte melhor. Costuma ser o passo seguinte, depois que a primeira versão acumulou visitas suficientes para a comparação significar alguma coisa.")
+ ]
 }
 ]
 
