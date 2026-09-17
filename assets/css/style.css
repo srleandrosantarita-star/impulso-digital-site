@@ -477,6 +477,7 @@ h1, h2, h3 {
   gap: 20px;
 }
 .service-card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--surface-border);
   border-radius: var(--radius);
@@ -644,3 +645,45 @@ h1, h2, h3 {
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); transition-delay: var(--delay, 0s); }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .reveal { transition: none; opacity: 1; transform: none; } }
+
+/* ---------- Páginas de serviço ---------- */
+.svc-page { padding-top: 130px; }
+.svc-hero { text-align: center; max-width: 780px; margin: 0 auto 8px; }
+.svc-hero h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); margin-bottom: 16px; }
+.svc-hero .hero-sub { margin: 0 auto 28px; }
+.svc-hero .hero-actions { justify-content: center; }
+.breadcrumbs { font-size: 0.86rem; color: var(--ink-faint); margin-bottom: 22px; text-align: center; }
+.breadcrumbs a { color: var(--ink-soft); }
+.breadcrumbs a:hover { color: var(--teal-deep); text-decoration: underline; }
+.breadcrumbs span { margin: 0 6px; }
+.svc-body { max-width: 780px; margin: 0 auto; }
+.svc-body h2 { font-size: clamp(1.45rem, 2.8vw, 1.9rem); margin: 0 0 16px; }
+.svc-body h3 { font-size: 1.08rem; margin-bottom: 8px; }
+.svc-body p { color: var(--ink-soft); margin-bottom: 16px; }
+.svc-body strong { color: var(--ink); }
+.svc-list { display: grid; gap: 14px; margin: 0 0 8px; }
+.svc-list li { display: flex; gap: 12px; align-items: flex-start; color: var(--ink-soft); }
+.svc-list li::before {
+  content: ""; flex: none; width: 20px; height: 20px; margin-top: 2px; border-radius: 50%;
+  background: var(--teal-grad);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='%23000' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.faq-list { display: grid; gap: 12px; }
+.faq-item {
+  background: var(--surface); border: 1px solid var(--surface-border);
+  border-radius: var(--radius); padding: 20px 22px;
+}
+.faq-item h3 { margin-bottom: 8px; color: var(--ink); }
+.faq-item p { margin-bottom: 0; }
+.svc-related { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.svc-related a {
+  border: 1px solid var(--surface-border); background: var(--surface);
+  border-radius: 999px; padding: 9px 18px; font-size: 0.9rem;
+  font-weight: 600; color: var(--ink-soft); transition: all 0.25s var(--ease);
+}
+.svc-related a:hover { color: var(--teal-deep); border-color: var(--teal); transform: translateY(-2px); }
+@media (max-width: 720px) { .svc-page { padding-top: 110px; } }
+.service-card h3 .card-link { color: inherit; }
+.service-card h3 .card-link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.service-card:hover h3 .card-link { color: var(--teal-deep); }
